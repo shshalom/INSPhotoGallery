@@ -22,6 +22,8 @@ import UIKit
 public protocol INSPhotosOverlayViewable:class {
     weak var photosViewController: INSPhotosViewController? { get set }
     
+    var shouldHideActionButton:Bool { get set }
+    
     func populateWithPhoto(_ photo: INSPhotoViewable)
     func setHidden(_ hidden: Bool, animated: Bool)
     func view() -> UIView
@@ -34,6 +36,15 @@ extension INSPhotosOverlayViewable where Self: UIView {
 }
 
 open class INSPhotosOverlayView: UIView , INSPhotosOverlayViewable {
+    
+    public var shouldHideActionButton: Bool = false {
+        didSet {
+            if shouldHideActionButton {
+                navigationItem.rightBarButtonItem = nil
+            }
+        }
+    }
+    
     open private(set) var navigationBar: UINavigationBar!
     open private(set) var captionLabel: UILabel!
     

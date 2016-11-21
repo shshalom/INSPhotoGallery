@@ -28,6 +28,15 @@ class CustomOverlayView: INSNibLoadedView {
 
 
 extension CustomOverlayView: INSPhotosOverlayViewable {
+    public var shouldHideActionButton: Bool {
+        get {
+            return false
+        }
+        set {
+            
+        }
+    }
+
     func populateWithPhoto(_ photo: INSPhotoViewable) {
         
     }
@@ -50,4 +59,6 @@ extension CustomOverlayView: INSPhotosOverlayViewable {
             self.isHidden = hidden
         }
     }
+    
+    
 }

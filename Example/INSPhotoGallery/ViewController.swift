@@ -54,9 +54,13 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         let cell = collectionView.cellForItem(at: indexPath) as! ExampleCollectionViewCell
         let currentPhoto = photos[(indexPath as NSIndexPath).row]
         let galleryPreview = INSPhotosViewController(photos: photos, initialPhoto: currentPhoto, referenceView: cell)
+        
+        
         if useCustomOverlay {
-            galleryPreview.overlayView = CustomOverlayView(frame: CGRect.zero)
+       //     galleryPreview.overlayView = CustomOverlayView(frame: CGRect.zero)
         }
+        
+        galleryPreview.overlayView.shouldHideActionButton = true
         
         galleryPreview.referenceViewForPhotoWhenDismissingHandler = { [weak self] photo in
             if let index = self?.photos.index(where: {$0 === photo}) {
